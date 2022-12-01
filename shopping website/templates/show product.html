@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>{{product["title"]}}</title>
+    <style>
+        .product-card {
+            border: 2px solid #98F5FF;
+            border-radius: 10px;
+            margin: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            position: relative;left: 50%;
+            transform: translateX(-50%);
+            display: inline-block; /* does that the width will be by the content inside it(width=long of content) */
+            width: 50%;
+        }
+        .product-pic {
+            width: 250px;
+            aspect-ratio: 1;
+            float: left; /* make it to float left to the text */
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+
+        .add-to-cart-btn {
+            margin: 10px;
+            border-radius: 100px;
+            background: linear-gradient(#f24330, #f68770);
+            border: 2px solid #f24330;
+        }
+        .add-to-cart-btn:hover {
+            background: linear-gradient(#e13230,#e57660);
+        }
+        .add-to-cart-btn:active {
+            background: linear-gradient(#d02120,#d46550);
+            color: #fff;
+        }
+        .buy-now-btn {
+            margin: 10px;
+            border-radius: 100px;
+            background: linear-gradient(#7FFFD4	,#66CDAA);
+            border: 2px solid #66CDAA;
+        }
+        .buy-now-btn:hover {
+            background: linear-gradient(#6eeec3	,#55bc99);
+        }
+        .buy-now-btn:active {
+            background: linear-gradient(#5dddb2	,#44ab88);
+            color: #fff;
+        }
+    </style>
+{%endblock%}
+
+
+{% block code %}
+    <div class="product-card">
+        <h2>{{product["title"]}}</h2>
+        <h4 style="margin-top: 10px;margin-bottom: 10px;">By: {{product["username"]}}</h4>
+        <p style="white-space:pre-wrap"><img class="product-pic" src="{{url_for('static',filename=product['pic path'])}}">{{product["description"]}}</p>
+        <p style="font-size: 20px;">{{product["price"]}}₪</p>
+        <a href="/add/{{product['title']}}"> <button class="add-to-cart-btn">Add to cart<i class="fa fa-shopping-cart"></i></button> </a>
+        <a href="/buy now/{{product['title']}}"> <button class="buy-now-btn">Buy now</button> </a>
+    </div>
+{%endblock%}

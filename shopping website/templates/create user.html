@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        #btn.create {
+            transition-duration: 0.2s;
+            border: 2px solid #5dddb2;
+            border-radius: 100px;
+            background: linear-gradient(#7FFFD4,#00FFFF);
+        }
+        #btn.create:hover {
+            background: linear-gradient(#5dddb2,#00dddd);
+        }
+        #btn.create:active {
+            background: linear-gradient(#3bbb90,#00bbbb);
+            color: #fff;
+        }
+        .create_user-card {
+            margin-top: 20px;
+            padding: 10px;
+            padding-top: 0px;
+            text-align: center;
+            position: relative;left: 50%;
+            transform: translateX(-50%);
+            width: 550px;
+            aspect-ratio: 0.9; /* 90% of it */
+
+            background: linear-gradient(rgba(0, 255, 255,0.2),rgba(0, 255, 255,0.5)); /* combination with the border color */
+            border: 2px solid #acffff;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        input {
+            font-size: 25px;
+            transition-duration: 0.2s;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        input:hover {
+            border: 2px solid #0075de;
+        }
+        input:focus {
+            background: rgba(88,155,155,0.7);
+            color: #fff;
+        }
+        p {font-size: 25px;}
+        .down-a {
+            font-size: 20px;
+            position: absolute;bottom: 10px; left: 50%;
+            transform: translateX(-50%);
+        }
+        .flash {
+            font-size: 20px;
+            color: #f00;
+            text-decoration: none;
+        }
+        .flash:hover {color: #f00;}
+    </style>
+{%endblock%}
+
+{% block code %}
+    <form method="post">
+        <div class="create_user-card">
+            <p><h1 style="font-size: 30px;">Create user</h1></p>
+            <p> </p>
+            <p>Username: <input type="text" name="username" placeholder="username"></p>
+
+            <p>Password: <input type="password" name="password" placeholder="password" id="show password"></p>
+            <p style="font-size: 20px;"><input type="checkbox" onclick="show_hide_password()"> show password</p>
+            <p>Password(confirm): <input type="password" name="confirm password" placeholder="Password(confirm):"></p>
+            <p>Credit card numbers (16 long): <input type="text" name="credit card num" placeholder="numbers" style="width: 18ch;"></p>
+            
+            <p><input type="submit" id="btn" class="create" value="Create"></p>
+            <p><a href="/login" class="down-a">Has an account?</a></p>
+            {% if problem != "" %}
+                <a class="flash">{{problem}}</a>
+            {% endif %}
+        </div>
+    </form>
+
+    <script>
+        function show_hide_password() { // show/hide password function
+          var x = document.getElementById("show password");
+          if (x.type === "password") { // if it doesnt show
+            x.type = "text";
+          } else { // if it does show
+            x.type = "password";
+          }
+        }
+        </script>
+{%endblock%}

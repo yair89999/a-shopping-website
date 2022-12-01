@@ -1,0 +1,64 @@
+
+
+.nav {
+    background: linear-gradient(#97F9F9,#cbffff); /* to combine the 2 "navbars" together(with the .search-bar) opposite color order of .search-bar */
+}
+
+.nav b,a { /* just for the size+color */
+    font-size: 30px;
+    color: #000;
+}
+
+
+
+/* search textbox objects(button,input/textbox,div that contain all of them) */
+.search-bar {
+    background: linear-gradient(#cbffff,#97F9F9); /* to combine the 2 "navbars" together(with the .nav) opposite color order of .nav */
+    padding: 10px;
+}
+
+.search {
+    transition-duration: 0.2s;
+    width: 50%;
+    border: solid 2px;
+    font-size: 25px;
+    border-top-right-radius: 100px;border-bottom-right-radius: 100px;
+    padding-left: 10px;
+}
+.search:hover {
+    border-color: #0075de;
+}
+.search:focus {
+    background-color: rgba(88,155,155,0.5);
+}
+
+.search-btn {
+    font-size: 25px;
+    border-top-left-radius: 100px;border-bottom-left-radius: 100px;
+    background-color: #0075de;
+    border: 2px solid #184c79;
+    color: #fff;
+}
+.search-btn:hover {
+    background-color: #3b72a1;
+}
+.search-btn:active {
+    background-color: #184c79;
+}
+/* ends here */
+
+
+/* home-btn is showing in the 404 page */
+.home-btn {
+    font-size: 25px;
+    border-radius: 100px;
+    background-color: #0075de;
+    border: 2px solid #184c79;
+    color: #fff;
+}
+.home-btn:hover {
+    background-color: #3b72a1;
+}
+.home-btn:active {
+    background-color: #184c79;
+}

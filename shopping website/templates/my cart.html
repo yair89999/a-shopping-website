@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        .back-card {
+            margin-top: 20px;
+            padding: 10px;
+            padding-top: 0px;
+            text-align: center;
+            position: relative;left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            min-width: 550px; /* can be only above 550px */
+
+            background: linear-gradient(rgba(0, 255, 255,0.2),rgba(0, 255, 255,0.5)); /* combination with the border color */
+            border: 2px solid #acffff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .card {
+            display: inline-block;
+            border-radius: 10px;
+            border: 2px solid rgb(95, 255, 95);
+            margin: 10px;
+            padding: 10px;
+            background: transparent;
+        }
+        .card-pic {
+            width: 150px;
+            aspect-ratio: 1;
+            margin: 10px;
+        }
+        .btn-go-to-page {
+            border-radius: 100px;
+            background: linear-gradient(#00EEEE, #7FFF00);
+            border: 2px solid #7FFF00;
+        }
+        .btn-go-to-page:hover {
+            background: linear-gradient(#00cccc, #5ccc00);
+        }
+        .btn-go-to-page:active {
+            background: linear-gradient(#00aaaa, #3aaa00);
+            color: #fff;
+        }
+        a,h2 {
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover,h2:hover {
+            color: rgb(0, 0, 255);
+        }
+        a:active,h2:active {
+            color: rgb(0, 0, 161);
+        }
+        .btn-remove {
+            background-color: #0d6efd;
+            color: #fff;
+            padding-left: 10px;padding-right: 10px;
+            border: 1px solid #fff;
+            border-radius: 100px;
+        }
+        .btn-remove:hover {
+            background-color: #0b4cdb;
+        }
+        .btn-remove:active {
+            background-color: #0a3bca;
+        }
+        .buy-all {
+            margin-top: 10px;
+            border-radius:100px;
+            font-size: 30px;
+            background:linear-gradient(#1E90FF,#00C9ff);
+            border: 2px solid #1E90FF;
+            color: #fff;
+        }
+        .buy-all:hover {
+            transform: scale(1.05);
+            background:linear-gradient(#0d80ee,#00b8ee);
+        }
+        .buy-all:active {
+            background:linear-gradient(#0b60cc,#0096cc);
+        }
+    </style>
+{%endblock%}
+
+{% block code %}
+    <h1 style="text-align: center;">{{user}} Cart</h1>
+    <div class="back-card">
+        {% if cart == [] %} <!--empty cart-->
+            <style>
+                .back-card {
+                    border: 2px solid rgb(95, 255, 95);
+                }
+            </style>
+            <h1>No items in cart</h1>
+        {% else %} <!--items in cart-->
+            <p> <a href="/buy all"><button class="buy-all">Buy all</button></a> </p>
+            {% for item in cart %}
+                <div class="card" id="sell">
+                    <p><a href="/product/{{item['title']}}"> <h2 style="text-align: center;">{{item["title"]}}</h2> </a></p>
+                    <p><a href="/product/{{item['title']}}"> <img class="card-pic" id="sell" src="{{url_for('static',filename=item['pic path'])}}"> </a></p>
+                    <a href="/product/{{item['title']}}"> <pre style="text-align:left; margin-left: 10px; font-size: 15px;white-space: pre-wrap;">{{item["description"]}}</pre> </a>
+                    <p><a style="font-size: 25px;">{{item["price"]}}₪</a></p>
+                    <!--next <p> has 2 buttons: "go to page" button and "remove"(remove product) buttons-->
+                    <p style="font-size: 30px;"><a href="/product/{{item['title']}}"><button class="btn-go-to-page">Go to product page</button></a>    <a href="/remove/{{item['title']}}"><button class="btn-remove">Remove</button></a> </p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{%endblock%}

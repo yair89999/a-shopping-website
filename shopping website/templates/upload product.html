@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        .card {
+            background: rgba(255,255,255,0.1); /* to see the cart in the background */
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #E0EEEE;
+            display: inline-block; /* does that the width will be by the content inside it(width=long of content) */
+            position: relative;left: 50%;
+            transform: translateX(-50%);
+        }
+        .btn-submit {
+            border-radius: 100px;
+            background: linear-gradient(#00EEEE, #7FFF00);
+            border: 2px solid #7FFF00;
+            font-size: 30px;
+        }
+        .btn-submit:hover {
+            background: linear-gradient(#00cccc, #5ccc00);
+        }
+        .btn-submit:active {
+            background: linear-gradient(#00aaaa, #3aaa00);
+            color: #fff;
+        }
+        .title {
+            transition-duration: 0.2s;
+            border: solid 2px;
+            font-size: 25px;
+            font-weight: bold; /* make the text inside bold */
+            text-align: center;
+
+        }
+        .title:hover {
+            border-color: #0075de;
+        }
+        .title:focus {
+            background-color: rgba(88,155,155,0.3);
+        }
+        .description {
+            transition-duration: 0.2s;
+            font-size: 20px;
+            border: solid 2px;
+            resize: none; /* removes the option of resizing */
+        }
+        .description:hover {
+            border-color: #0075de;
+        }
+        .description:focus {
+            background-color: rgba(88,155,155,0.3);
+        }
+        .price {
+            transition-duration: 0.2s;
+            font-size: 20px;
+            border: solid 2px;
+            width: 12ch;
+            border-radius: 5px;
+        }
+        .price:hover {
+            border-color: #0075de;
+        }
+        .price:focus {
+            background-color: rgba(88,155,155,0.3);
+        }
+    </style>
+{%endblock%}
+
+
+{% block code %}
+    <h1 style="text-align: center;">upload product</h1>
+    <div class="card">
+        <form method="post" enctype="multipart/form-data" style="text-align: center;">
+            <!--order: title, upload picture, write description-->
+            <p> <input name="title" placeholder="Title" class="title" value="{{title}}"> </p>
+            <p>(picture will be the best when width=height) <input id="upload" type="file" name="file" style="margin: 10px;"> </p>
+            {% if flash_msg != "" %}
+                {% if flash_msg == "No file was selected" or flash_msg == "Can only upload jpg/png pictures" %}
+                    <p style="text-align: center;color: #f00;">{{flash_msg}}</p>
+                {% else %} <!--upload good-->
+                    <p style="text-align: center;color: #00f;">{{flash_msg}}</p>
+                {% endif %}
+            {% endif %}
+            <p> <textarea name="description" class="description" rows="10" cols="100" placeholder="Product description:">{{description}}</textarea> </p>
+            <p style="font-size: 25px;position: relative;right: 25%;"> <input type="text" name="price" class="price" value="{{price}}"> ₪(IL shekels) </p>
+            {% if problem == "Product uploaded" %}
+                <p style="color: #00f;">{{problem}}</p>
+            {% else %}
+                <p style="color: #f00;">{{problem}}</p>
+            {% endif %}
+            <p> <input type="submit" value="Upload" class="btn-submit"> </p>
+        </form>
+    </div>
+{%endblock%}

@@ -1,0 +1,10 @@
+{
+    "people" : [
+        {
+            "username":"yair","password":"yair123", "credit card":"1234567890123456", "items in cart":[], "items ordered":[], "items selling":[]
+        },
+        {
+            "username":"yair mizrachi","password":"yair123", "credit card":"1234567890123456", "items in cart":[], "items ordered":[], "items selling":[]
+        }
+    ]
+}

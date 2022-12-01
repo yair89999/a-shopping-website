@@ -1,0 +1,70 @@
+<!--shows the options after the user searched something-->
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        .alone-product-div {
+            border-radius: 10px;
+            border: 2px solid rgb(95, 255, 95);
+            margin: 10px;
+            width: 20vw;
+            max-width: 20vw;
+            min-width: 15vw;
+            text-align: center;
+        }
+        .inner-card-pic {
+            width: 150px;
+            aspect-ratio: 1;
+            margin: 10px;
+        }
+
+        .btn-go-to-page {
+            border-radius: 100px;
+            background: linear-gradient(#00EEEE, #7FFF00);
+            border: 2px solid #7FFF00;
+        }
+        .btn-go-to-page:hover {
+            background: linear-gradient(#00cccc, #5ccc00);
+        }
+        .btn-go-to-page:active {
+            background: linear-gradient(#00aaaa, #3aaa00);
+            color: #fff;
+        }
+        a,h2 {
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover,h2:hover {
+            color: rgb(0, 0, 255);
+        }
+        a:active,h2:active {
+            color: rgb(0, 0, 161);
+        }
+    </style>
+{% endblock %}
+
+{% block code %}
+    {% if items_to_show == [] %}
+        <p style="text-align: center;"><a>Hm... we couldn't find: "{{searched}}"</a></p>
+    {% else %}
+        <h3 style="text-align: center;">results: {{searched}}</h1>
+        {% for products in items_to_show %}
+            <table style="display: inline-block;position: relative;left: 50%; transform: translateX(-50%);">
+                <tr>
+                    {% for product in products %}
+                        <td>
+                            <div class="alone-product-div">
+                                <p><a href="/product/{{product['title']}}"> <h2 style="text-align: center;">{{product["title"]}}</h2> </a></p>
+                                <p><a href="/product/{{product['title']}}"> <img class="inner-card-pic" src="{{url_for('static',filename=product['pic path'])}}"> </a></p>
+                                <a href="/product/{{product['title']}}"> <pre style="text-align:left; margin-left: 10px; font-size: 15px;white-space: pre-wrap;">{{product["description"]}}</pre> </a>
+                                <p><a style="font-size: 25px;">{{product["price"]}}₪</a></p>
+                                <!--next <p> has 2 buttons: "go to page" button and "del"(delete product) button-->
+                                <p style="font-size: 30px;"><a href="/product/{{product['title']}}"><button class="btn-go-to-page">Go to product page</button></a></p>
+                            </div>
+                        </td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

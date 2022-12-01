@@ -1,0 +1,32 @@
+{
+    "products": [
+        {
+            "username": "yair",
+            "title": "Yair's product",
+            "description": "this is my testing product, Have fun!",
+            "price": "1,000,000",
+            "pic path": "product pictures//Yair's product.png"
+        },
+        {
+            "username": "yair",
+            "title": "testing",
+            "description": "this is a testing product",
+            "price": "1",
+            "pic path": "product pictures//testing.png"
+        },
+        {
+            "username": "yair",
+            "title": "gaming mouse",
+            "description": "this is the best gaming mouse that ever was",
+            "price": "123",
+            "pic path": "product pictures//gaming mouse.png"
+        },
+        {
+            "username": "shira",
+            "title": "testing my product b",
+            "description": "this is my testing product, Have fun!",
+            "price": "1,000,000",
+            "pic path": "product pictures//Yair's product.png"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "people": [
+        {
+            "username": "yair",
+            "password": "yair123",
+            "credit card": "1234567890123456",
+            "items in cart": [
+                "Yair's product",
+                "testing"
+            ],
+            "items ordered": [
+                "Yair's product"
+            ],
+            "items selling": []
+        },
+        {
+            "username": "shira",
+            "password": "123",
+            "credit card": "1234567890123456",
+            "items in cart": [],
+            "items ordered": [],
+            "items selling": []
+        },
+        {
+            "username": "y",
+            "password": "y",
+            "credit card": "1234567890123456",
+            "items in cart": [],
+            "items ordered": [
+                "gaming mouse"
+            ],
+            "items selling": []
+        }
+    ]
+}
